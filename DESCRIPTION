@@ -4,8 +4,8 @@ Title: Lab code 2025
 Version: 0.1.0
 Authors@R: c(
     person(
-      "Jane", "Doe",
-      email = "jane@example.com",
+      "Emily", "Peterson",
+      email = "emilypeterson@ou.edu",
       role = c("aut", "cre")
     )
   )
