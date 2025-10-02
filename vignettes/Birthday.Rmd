@@ -1,0 +1,121 @@
+---
+title: "Birthday"
+author: "Emily Peterson"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Birthday}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(MATH4753F25EmilyPeterson)
+```
+
+
+
+
+# 1.Derivation
+
+The sample space for this problem is the n students in the class. Therefore, $$A = \{2\ or\ more\ people\ have\ the\ same\ birthday\}$$ and $$A^c = \bar{A} = \{every\ student\ has\ a\ different\ birthday\}$$ where $$1 = P(A)+P(\bar{A})$$
+
+We'll start with the complement, $\bar{A}$. A student will "choose" from the list of possible birthdays, starting at 365, and remove it from the list of possible days. This process repeats for the $n$ students with each choosing one of the remaining birthdays from the possible 365 days. Therefore, 
+$$P(A^c)=\frac{365}{365}*\frac{364}{365}*\frac{363}{365}*...*\frac{365-n+1}{365}$$
+
+Collapsing, 
+$$P(A^c)=\frac{365*364*363*...*(365-n+1)}{365^n}$$
+
+Because $1 = P(A)+P(\bar{A})$,
+
+$$P(A) = 1 - P(\bar{A}) $$
+
+So 
+$$P(A)=1-\frac{365*364*363*...*(365-n+1)}{365^n}$$
+
+Rearranging, $$P(A)=1-\frac{365!}{365^n(365-n)!}$$
+
+Using the definition of permutations, 
+$$P(N, n) = _NP_n = \frac{N!}{(N-n)!}$$
+
+
+We find
+$$P(A) = 1 - \frac{_{365}P_n}{365^n}$$
+
+
+
+
+# 2.Reformation
+
+Starting with $P(\bar{A})$ again,
+$$P(\bar{A}) = \frac{_{365}P_n}{365^n}$$
+
+
+
+Take the (natural) logarithm of both sides and rearrange with log properties,
+$$log(P(\bar{A})) = log(_{365}P_n) - n*log(365)$$
+
+
+Based on the definition of permutations above and the definition of combinations: 
+$$C(N, n)=_NC_n=\binom{N}{n}=\frac{N!}{n!(N-n)!}$$
+
+
+Therefore, 
+$$_{365}P_n = n!*\binom{365}{n}$$
+
+
+So, 
+$$log(P(\bar{A})) = log(n!*\binom{365}{n}) - n*log(365)$$
+
+
+Using log properties agian, 
+$$log(P(\bar{A})) = log(n!)+log(\binom{365}{n}) - n*log(365)$$
+
+
+Converting to R functions:
+$$log(P(\bar{A})) = lfactorial(n)+lchoose(365, n) - n*log(365)$$
+
+
+Plugging into $P(A)$, 
+$$P(A) = 1-P(\bar{A})= 1-exp(logP(\bar{A}))$$
+
+
+Therefore, we get:
+$$P(A) = 1-exp(lfactorial(n)+lchoose(365, n) - n*log(365))$$
+
+
+
+
+# 3.Body of the Function
+
+```{r}
+#' The probability of shared birthdays
+#'
+#' @param x a quantitative variable
+#'
+#' @returns the probability of two or more people in a group of x having the same birthday
+#' @export
+#'
+#' @examples
+#' birthday(20:24)
+birthday <- function(x) {
+  1 - exp(lchoose(365, x) + lfactorial(x) - x * log(365))
+}
+```
+
+
+
+
+# 4.Example
+
+```{r}
+birthday(20:25)
+```
+
