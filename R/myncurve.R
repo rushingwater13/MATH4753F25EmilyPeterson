@@ -1,4 +1,4 @@
-#' A Normal Distribution plot with shaded probability a
+#' A Normal Distribution plot with shaded probability P(Y <= a)
 #'
 #' @param mu any real number, the mean of the distribution
 #' @param sigma any positive number, the standard deviation of the distribution
@@ -10,6 +10,11 @@
 #' @examples
 #' myncurve(2, 3, 1)
 myncurve = function(mu, sigma, a){
+
+  # make sure the sigma value is valid
+  if(sigma <= 0){
+    stop("sigma must be a positive number.", call. = FALSE)
+  }
 
   # Draw the curve with the provided values
   curve(dnorm(x, mean = mu, sd = sigma),
@@ -27,8 +32,8 @@ myncurve = function(mu, sigma, a){
   # print the area in the polygon, based on where the cutoff is
   prob2 = round(prob, 4)
   text(a - sigma, 0.3*dnorm(a-0.5*sigma, mu, sigma),
-       paste0("Area = ",prob2))
+       paste0("Area = ", prob2))
 
-  list(mu = mu, sigma = sigma, area = prob)
+  list(mu = mu, sigma = sigma, area = prob2)
 }
 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/myncurve.R
 \name{myncurve}
 \alias{myncurve}
-\title{A Normal Distribution plot with shaded probability a}
+\title{A Normal Distribution plot with shaded probability P(Y <= a)}
 \usage{
 myncurve(mu, sigma, a)
 }
@@ -17,7 +17,7 @@ myncurve(mu, sigma, a)
 a plot showing the distribution curve with the probability area shaded and a list of the mean, standard deviation, and area values
 }
 \description{
-A Normal Distribution plot with shaded probability a
+A Normal Distribution plot with shaded probability P(Y <= a)
 }
 \examples{
 myncurve(2, 3, 1)
