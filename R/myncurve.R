@@ -3,6 +3,8 @@
 #' @param mu any real number, the mean of the distribution
 #' @param sigma any positive number, the standard deviation of the distribution
 #' @param a any real number, the value of the desired probability
+#' @importFrom graphics curve polygon text
+#' @importFrom stats dnorm pnorm
 #'
 #' @returns a plot showing the distribution curve with the probability area shaded and a list of the mean, standard deviation, and area values
 #' @export
