@@ -39,3 +39,5 @@ myncurve = function(mu, sigma, a){
   list(mu = mu, sigma = sigma, area = prob2)
 }
 
+# declare the global variable used in curve() so it doesn;t yell at me
+utils::globalVariables("x")
