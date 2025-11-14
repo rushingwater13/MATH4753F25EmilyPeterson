@@ -17,7 +17,7 @@ mycltu <- function(n, iter, a = 0, b = 10){
 
   # Place these numbers into a matrix
   # The columns will correspond to the iteration and the rows will equal the sample size n
-  data <- matrix(y, nr = n, nc = iter, byrow = TRUE)
+  data <- matrix(y, nrow = n, ncol = iter, byrow = TRUE)
 
   # apply the function mean to the columns (2) of the matrix
   # these are placed in a vector w
