@@ -9,7 +9,7 @@
 #' @importFrom graphics segments
 #' @importFrom stats density dunif quantile runif
 #'
-#' @returns a histogram showing the distribution of the samples and the population values and confidence interval for the given statistic funcition. Also a list containing ci, x, fun, and xstat
+#' @returns a histogram showing the distribution of the samples and the population values and confidence interval for the given statistic function. Also a list containing ci, x, fun, and xstat
 #' @export
 #'
 #' @examples

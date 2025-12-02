@@ -20,7 +20,7 @@ myboot2(iter = 10000, x, fun = "mean", alpha = 0.05, cx = 1.5, ...)
 \item{...}{additional arguments passed to the histogram}
 }
 \value{
-a histogram showing the distribution of the samples and the population values and confidence interval for the given statistic funcition. Also a list containing ci, x, fun, and xstat
+a histogram showing the distribution of the samples and the population values and confidence interval for the given statistic function. Also a list containing ci, x, fun, and xstat
 }
 \description{
 Bootstrap Function to Estimate Confidence Interval
